@@ -1,10 +1,10 @@
 import type { AppProps } from 'next/app'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// if (typeof window !== "undefined") {
-//   require("jquery");
-//   require("bootstrap");
-// }
+if (typeof window !== "undefined") {
+  require("jquery");
+  require("bootstrap");
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
