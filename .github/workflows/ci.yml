@@ -29,6 +29,9 @@ jobs:
       - name: Test Application
         run: npm run test
 
+      - name: Run Application
+        run: npm run dev
+
       # - name: Deploy Next js Application to Vercel
       #   uses: amondnet/vercel-action@v20
       #   id: vercel
