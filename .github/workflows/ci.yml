@@ -2,46 +2,20 @@ name: CI
 
 on:
   push:
-    branches: [ main,develop ]
+    branches: [ main ]
 
 jobs:
-  Build-Test:
+  explore:
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
+    steps:  
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
         uses: actions/checkout@v2
-
-      - name: Setup Node v16.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16'
-
-      - name: NPM package install
-        run: npm install -g npm@6
-
-      - name: Clean Node Modules
-        run: npm run clean
-
-      - name: Install dependencies
-        run: SKIP_POST_INSTALL="yes" npm install
-
-      - name: Test Application
-        run: npm run test
-
-      # - name: Deploy Next js Application to Vercel
-      #   uses: amondnet/vercel-action@v20
-      #   id: vercel
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  #Required
-      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required
-      #     scope: ${{ secrets.VERCEL_TEAM_ID }}
-
-      # - name: Run Lighthouse
-      #   uses: foo-software/lighthouse-check-action@master
-      #   with:
-      #     accessToken: ${{ secrets.GITHUB_TOKEN }}
-      #     prCommentEnabled: true
-      #     urls: ${{ steps.vercel.outputs.preview-url }}
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
