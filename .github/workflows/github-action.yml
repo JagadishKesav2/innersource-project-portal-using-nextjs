@@ -23,19 +23,19 @@ jobs:
       - name: Test Application
         run: npm run test
 
-      - name: Deploy Next js Application to Vercel
-        uses: amondnet/vercel-action@v20
-        id: vercel
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required 
-          scope: ${{ secrets.VERCEL_TEAM_ID }}
+      # - name: Deploy Next js Application to Vercel
+      #   uses: amondnet/vercel-action@v20
+      #   id: vercel
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  #Required
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required 
+      #     scope: ${{ secrets.VERCEL_TEAM_ID }}
           
-      - name: Run Lighthouse
-        uses: foo-software/lighthouse-check-action@master
-        with:
-          accessToken: ${{ secrets.GITHUB_TOKEN }}
-          prCommentEnabled: true
-          urls: ${{ steps.vercel.outputs.preview-url }}
+      # - name: Run Lighthouse
+      #   uses: foo-software/lighthouse-check-action@master
+      #   with:
+      #     accessToken: ${{ secrets.GITHUB_TOKEN }}
+      #     prCommentEnabled: true
+      #     urls: ${{ steps.vercel.outputs.preview-url }}

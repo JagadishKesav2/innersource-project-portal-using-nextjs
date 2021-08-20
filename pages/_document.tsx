@@ -37,6 +37,10 @@ class MyDocument extends Document<Props> {
             sizes="32x32"
           />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          />
         </Head>
         <body>
           <Main />

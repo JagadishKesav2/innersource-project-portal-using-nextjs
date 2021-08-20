@@ -7,6 +7,7 @@ import axios from 'axios';
 const Index = () => {
 
   const [recordCount, setRecordCount] = useState(0)
+  const [languages, setLanguages] = useState(["All"])
   const fetchData = async () => {
     return await axios.get('./project-portal.json');
   };
@@ -14,12 +15,10 @@ const Index = () => {
   useEffect(() => {
     console.log("hiu");
     fetchData().then((res) => {
-      let languages: string[] = ["All"];
-
       res.data.map((lang: any) => {
         if (lang.languages) languages.push(lang.languages)
       })
-      languages = Array.from(new Set(languages));
+      setLanguages(Array.from(new Set(languages)));
       setRecordCount(res.data.length)
     });
   }, [])
@@ -29,7 +28,7 @@ const Index = () => {
         <title>Next.js 100</title>
       </Head>
       <Header projectCount={recordCount}/>
-      <Select />
+      <Select lang={languages}/>
       <div>Next.js 100</div>
     </>
   );
