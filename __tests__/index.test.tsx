@@ -49,8 +49,6 @@ describe("Test case for index.js", () => {
 
         await expect(mockedAxios.get).toHaveBeenCalledTimes(1);
 
-        // const contextValues = { type: 'SET_RECORDS_COUNT', payload: 41 };
-
         jest
         .spyOn(React, 'useContext')
         .mockImplementation(() => ({
@@ -58,15 +56,16 @@ describe("Test case for index.js", () => {
             dispatch: dispatch
         }));
 
-        const updateAction = { type: 'SET_RECORDS_COUNT', payload: 41 };
-        const updatedState = Reducer(initialState, updateAction);
-        const updateAction1 = { type: 'SET_RECORDS_COUNTS', payload: 50 };
-        const updatedState1 = Reducer(initialState, updateAction1);
-
+        const updateAction = { type: 'SET_RECORDS_COUNTS', payload: 50 };
+        Reducer(initialState, updateAction);
+        
+        // please do not remove the below comment
+        // reference for useReducer and useContext for global state management ('https://stackoverflow.com/questions/63142322/how-to-test-react-usecontext-usereducer-dispatch-in-component')
+        
         // expect(dispatch).toHaveBeenCalledTimes(1);
         // expect(dispatch).toHaveBeenCalledWith({ type: "SET_RECORDS_COUNT", payload: 41 });
-
         // expect(dispatch).toHaveBeenCalledWith({ type: "SET_RECORDS_COUNTS", payload: 41 });
+
         expect(wrapper.find('span#header').text()).toEqual('InnerSource Project Portal')
         expect(wrapper.find('span#sub-header').text()).toEqual('Leverage, Reuse or Contribute to 41 InnerSource projects')
     })

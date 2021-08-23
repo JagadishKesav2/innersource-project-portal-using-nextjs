@@ -16,22 +16,25 @@ const Index = () => {
 
   useEffect(() => {
     console.log("hiu");
-    fetchData().then((res) => {
-      res.data.map((lang: any) => {
-        if (lang.languages) languages.push(lang.languages)
-      })
-      setLanguages(Array.from(new Set(languages)));
-      dispatch({ type: 'SET_RECORDS_COUNT', payload: res.data.length })
-    });
+    fetchData()
+      .then((res) => {
+        res.data.map((lang: any) => {
+          if (lang.languages) languages.push(lang.languages)
+        })
+
+        setLanguages(Array.from(new Set(languages)));
+
+        dispatch({ type: 'SET_RECORDS_COUNT', payload: res.data.length })
+        
+      });
   }, [])
-  console.log(state.recordsCount);
-      
+
   return (
     <>
       <Head>
         <title>Next.js 100</title>
       </Head>
-      <Header projectCount={state.recordsCount}/>
+      <Header projectCount={state.recordsCount} />
       <Select lang={languages} />
       <div>Next.js 100</div>
     </>
