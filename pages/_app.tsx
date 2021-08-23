@@ -1,8 +1,15 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+import Store, { Context } from '../store/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useContext } from 'react';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  const { state, dispatch } = useContext(Context);
+  return (
+    <Store>
+      <Component {...pageProps} />
+    </Store>
+  )
 };
 
 // Only uncomment this method if you have blocking data requirements for
